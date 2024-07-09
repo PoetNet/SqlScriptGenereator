@@ -1,0 +1,1 @@
+﻿public record SourceTagPair(string SourceId, string TagId);
