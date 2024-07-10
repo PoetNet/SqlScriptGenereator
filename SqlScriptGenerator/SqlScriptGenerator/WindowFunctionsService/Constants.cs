@@ -2,6 +2,8 @@
 
 public static class Constants
 {
+    public static int MaxOddFunctions = 1500;
+
     public static List<SourceTagPair> SourceTags = new()
     {
         new ("spc1_3_iba_sh0", @"Modules.8 S7-Xplorer.Analog.User_DB_DB3000 Motor_Parameter\Dr15_spare2"),

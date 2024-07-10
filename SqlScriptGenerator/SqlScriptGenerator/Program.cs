@@ -1,6 +1,6 @@
 ﻿using SqlScriptGenerator.WindowFunctionsService;
 
-string sqlScript = WindowFunctionsGenerator.Generate(2000, 100, 4);
+string sqlScript = WindowFunctionsGenerator.Generate(3000, 300, 8, 1500);
 
-string filePath = Path.Combine("..", @"..", @"..", @"WindowFunctionsService", @"Scripts", @"2000-100-4-Update.sql");
+string filePath = Path.Combine("..", @"..", @"..", @"WindowFunctionsService", @"Scripts", @"3000-300-8-1500-Update.sql");
 File.WriteAllText(filePath, sqlScript);

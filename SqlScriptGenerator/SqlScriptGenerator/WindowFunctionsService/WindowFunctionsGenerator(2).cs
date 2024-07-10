@@ -3,7 +3,7 @@ using System.Text;
 
 namespace SqlScriptGenerator.WindowFunctionsService;
 
-public class WindowFunctionsGenerator
+public class WindowFunctionsGenerator2
 {
     public static string BaseFunctionGuidFormat = "1ee1c11a-1f11-1f01-1ad1-{0:000000000000}";
     public static string BaseTagGuidFormat = "3ee3c33a-3f33-3f33-3ad3-{0:000000000000}";
@@ -72,13 +72,11 @@ INSERT INTO ""Nodes"" (""Id"", ""DisplayName"", ""NodeType"", ""Name"", ""Script
                     if (tagNumber > tagNum) tagNumber = 1;
 
                     scriptBuilder.Append($"""return history_avg("tag{tagNumber}_alias");""");
-                    //scriptBuilder.Append($"""dataPoints = get_history("tag{tagNumber}_alias"); a1 = avg(dataPoints); return a1;""");
                     deepCounter = 1;
                 }
                 else
                 {
                     scriptBuilder.Append($"""return history_avg("tag{tagNumber}_alias");""");
-                    //scriptBuilder.Append($"""dataPoints = get_history("tag{tagNumber}_alias"); a1 = avg(dataPoints); return a1;""");
                 }
             }
             else
@@ -90,7 +88,6 @@ INSERT INTO ""Nodes"" (""Id"", ""DisplayName"", ""NodeType"", ""Name"", ""Script
             var script = scriptBuilder.ToString();
             string shiftSchedule = windowsType < 5 ? $"'{ShiftScheduleId}'" : "null";
             sb.Append($"\n\t('{nodeId}', 'Функция {i}', 'function', 'Func{i}', '{script}', {windowsType++}, true, '{interval.Next(20, 60)} seconds', {shiftSchedule}),");
-            //sb.Append($"\n\t('{nodeId}', 'Функция {i}', 'function', 'Func{i}', '{script}', {windowsType++}, true, '1 minutes', {shiftSchedule}),");
 
             if (windowsType > 12) windowsType = 0;
             if (tagNumber > tagNum) tagNumber = 1;
